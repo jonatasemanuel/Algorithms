@@ -1,52 +1,56 @@
-#@staticmethod
+#staticmethod
 def check_int(user_input):
+
     try:
         if isinstance(user_input, int):
-            return user_input
-    except ValueError:
-        print('Please insert a integer number ')
-        return False
-    # finally:
-    #     # colocar em outro validador aqui é so provisorio.
-    #     cont = print(input('Continue[ yes / no ]: '))
-    #     if cont == 'yes':
-    #         pass
-    #     else:
-    #         return None
+           return True  
+
+    except TypeError:
+            if isinstance(user_input, float):
+                print('\nPlease insert a integer number \n')
+                return False
                 
+    except SyntaxError:
+            print('Just number')
+            return False
 
-def square_root(find_root, begin=0, end=None):
-
-    if check_int(find_root):
-        # reduizir operaçoes para nao criar lista, e sim checar no mo
-        arr = [x for x in range(0, find_root)] 
-        # vou ?
-        if end is None:
-            end = len(arr) - 1
-        
-        if begin <= end:
-            mid = (begin + end) // 2
-            if (mid * mid) == find_root:
-                return mid
-            elif (mid * mid) < find_root:
-                return square_root(find_root, mid+1, end)
-            else:
-                return square_root(find_root, begin, mid-1)
     
-    # else:
-    #     return "It's Not a number."   
-        # precisa tirar daqui para nao ficar validação junto da logica/
-        #algoritmos principal
-    return None
+def square_root(find_root, begin=0, end=None):
+    
+        if check_int(find_root):
+        
+            arr = [x for x in range(0, find_root)] 
+
+            if end is None:
+                end = len(arr) - 1
+            
+            if begin <= end:
+                mid = (begin + end) // 2
+                
+                if (mid * mid) == find_root:
+                    print(f'\n√{find_root} → {mid}\n')
+                    return mid
+                elif (mid * mid) < find_root:
+                    return square_root(find_root, mid+1, end)
+                else:
+                    return square_root(find_root, begin, mid-1)
+            else:
+                return print(f'\n√{find_root} → No square root\n')
+
+        # return None
 
 
-# MAIN
+if __name__ == '__main__':
 
-# colocar print na funcao.
-print('\n Square Root: ', square_root(81)) # 1milhao é maximo
+    square_root("teste")
+    square_root(81)
+    square_root(1.1)
+    square_root(11)
+    square_root('23fdf') 
 
+
+# 1º de tudo é arrumar a validação, depois arruma o resto da zona.
 # Criar classes para usar OOP.
-# Melhorar validação.
-
-# 1º de tudo é arrumar a validação, 
-# depois arruma o resto da zona.
+# colocar print na funcao ou classe
+# # Reduizir operaçoes para nao criar lista no list comprehension, 
+# e sim checar no momento ?
