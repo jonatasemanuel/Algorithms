@@ -1,2 +1,2 @@
 # Algorithms
-Repository with initial studies on algorithms.
+Repository with some of the main studies on algorithms. 
