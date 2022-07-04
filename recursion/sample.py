@@ -57,11 +57,12 @@
 
 
 def fat(n):
-    if n == 1:
-        return n
+    if n in [0, 1]:
+        return 1
     elif n > 1:
         return n * fat(n-1)
     return None
+
 
 # l = [1, 2, 4, 6, 7]
 # print(regress(9))
